@@ -14,6 +14,9 @@ APP_DIR=/home/azureuser/real_estate_flask
 
 # Create virtual environment and install dependencies
 cd "$APP_DIR"
+
+sudo apt-get update
+sudo apt-get install -y python3 python3-pip python3-venv nginx mysql-client
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
