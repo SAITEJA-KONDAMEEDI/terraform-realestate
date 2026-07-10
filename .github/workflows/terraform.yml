@@ -40,4 +40,5 @@ jobs:
            -var="client_id=${{ secrets.ARM_CLIENT_ID }}" \
            -var="client_secret=${{ secrets.ARM_CLIENT_SECRET }}" \
            -var="my_public_ip=${{ secrets.MY_PUBLIC_IP }}" \
-           -var="mysql_admin_password=${{ secrets.MYSQL_ADMIN_PASSWORD }}"
+           -var="mysql_admin_password=${{ secrets.MYSQL_ADMIN_PASSWORD }}" \
+           -var="vm_admin_password=${{ secrets.VM_ADMIN_PASSWORD }}" 
