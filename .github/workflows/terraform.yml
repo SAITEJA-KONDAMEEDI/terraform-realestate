@@ -42,5 +42,16 @@ jobs:
             -var="my_public_ip=${{ secrets.MY_PUBLIC_IP }}" \
             -var="mysql_admin_password=${{ secrets.MYSQL_ADMIN_PASSWORD }}" \
             -var="vm_admin_password=${{ secrets.VM_ADMIN_PASSWORD }}"
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main'
+        run: |
+          terraform apply -auto-approve \
+            -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
+            -var="tenant_id=${{ secrets.ARM_TENANT_ID }}" \
+            -var="client_id=${{ secrets.ARM_CLIENT_ID }}" \
+            -var="client_secret=${{ secrets.ARM_CLIENT_SECRET }}" \
+            -var="my_public_ip=${{ secrets.MY_PUBLIC_IP }}" \
+            -var="mysql_admin_password=${{ secrets.MYSQL_ADMIN_PASSWORD }}" \
+            -var="vm_admin_password=${{ secrets.VM_ADMIN_PASSWORD }}"     
 
       
