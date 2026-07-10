@@ -54,8 +54,9 @@ resource "null_resource" "deploy_app" {
   # Step 3: prep the VM (doc Section 6) and run setup_vm.sh (doc Section 7.2)
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update && sudo apt upgrade -y",
-      "sudo apt install -y python3 python3-pip python3-venv nginx mysql-client",
+      "export DEBIAN_FRONTEND=noninteractive",
+      "sudo apt-get update",
+      "sudo apt-get install -y python3 python3-pip python3-venv nginx mysql-client",
       "cd /home/${var.vm_admin_username}/real_estate_flask",
       "chmod +x setup_vm.sh",
       "DB_HOST='${var.mysql_fqdn}' DB_USER='${var.mysql_admin_username}' DB_PASS='${var.mysql_admin_password}' DB_NAME='${var.mysql_database_name}' bash setup_vm.sh"
