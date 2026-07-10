@@ -34,9 +34,9 @@ jobs:
 
       - name: Terraform Plan
         run: |
-         terraform plan \
-         -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
-         -var="tenant_id=${{ secrets.ARM_TENANT_ID }}" \
-         -var="client_id=${{ secrets.ARM_CLIENT_ID }}" \
-         -var="client_secret=${{ secrets.ARM_CLIENT_SECRET }}"
-         -var="my_public_ip=${{ secrets.MY_PUBLIC_IP }}"
+          terraform plan \
+           -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
+           -var="tenant_id=${{ secrets.ARM_TENANT_ID }}" \
+           -var="client_id=${{ secrets.ARM_CLIENT_ID }}" \
+           -var="client_secret=${{ secrets.ARM_CLIENT_SECRET }}" \
+           -var="my_public_ip=${{ secrets.MY_PUBLIC_IP }}"
