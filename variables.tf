@@ -88,7 +88,7 @@ variable "my_public_ip" {
 variable "mysql_server_name" {
   description = "Globally unique MySQL Flexible Server name"
   type        = string
-  default     = "dbserversai"
+  default     = "dbserversai001"
 }
 
 variable "mysql_admin_username" {
