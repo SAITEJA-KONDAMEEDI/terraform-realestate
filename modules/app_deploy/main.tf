@@ -81,8 +81,11 @@ resource "null_resource" "seed_database" {
   provisioner "remote-exec" {
     inline = [
       "cd /home/${var.vm_admin_username}/real_estate_flask",
-      "source venv/bin/activate",
-      "DB_HOST='${var.mysql_fqdn}' DB_USER='${var.mysql_admin_username}' DB_PASS='${var.mysql_admin_password}' DB_NAME='${var.mysql_database_name}' python index.py"
+      "pwd",
+      "ls -la",
+      "ls -la venv/bin",
+       "./venv/bin/python --version",
+       "DB_HOST='${var.mysql_fqdn}' DB_USER='${var.mysql_admin_username}' DB_PASS='${var.mysql_admin_password}' DB_NAME='${var.mysql_database_name}' ./venv/bin/python index.py"
     ]
   }
 
