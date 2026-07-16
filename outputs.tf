@@ -22,4 +22,4 @@ output "aks_cluster_name" {
   description = "AKS cluster name - use with: az aks get-credentials --resource-group RealEstate-rg --name <this>"
   value       = module.aks.aks_name
 }
-}
+
