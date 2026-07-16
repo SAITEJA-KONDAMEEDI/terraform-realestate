@@ -40,6 +40,6 @@ resource "azurerm_subnet_network_security_group_association" "app" {
 # why SSH timed out. Terraform makes this association an explicit resource,
 # so it can never silently be "forgotten" the way a portal click can.
 resource "azurerm_network_interface_security_group_association" "vm" {
-  network_interface_id     = var.network_interface_id
+  network_interface_id      = var.network_interface_id
   network_security_group_id = azurerm_network_security_group.main.id
 }

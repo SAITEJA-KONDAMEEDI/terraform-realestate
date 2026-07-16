@@ -67,14 +67,14 @@ module "acr" {
   source = "./modules/acr"
 
   resource_group_name = module.network.resource_group_name
-  location             = module.network.location
+  location            = module.network.location
 }
 
 module "aks" {
   source = "./modules/aks"
 
   resource_group_name = module.network.resource_group_name
-  location             = module.network.location
+  location            = module.network.location
   acr_id              = module.acr.acr_id
   aks_subnet_id       = module.network.aks_subnet_id
 }
