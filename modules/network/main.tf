@@ -34,6 +34,15 @@ resource "azurerm_subnet" "db" {
   }
 }
 
+# Tier 3 - AKS subnet (hosts the Kubernetes node pool, same VNet as DB
+# so pods can resolve the MySQL private DNS zone without extra peering)
+resource "azurerm_subnet" "aks" {
+  name                 = "aks-subnet"
+  resource_group_name  = azurerm_resource_group.main.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = var.aks_subnet_address_prefix
+}
+
 # Private DNS zone so the app can resolve the MySQL hostname privately
 # instead of over the public internet
 resource "azurerm_private_dns_zone" "mysql" {

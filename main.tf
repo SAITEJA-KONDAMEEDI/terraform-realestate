@@ -7,6 +7,7 @@ module "network" {
   vnet_address_space        = var.vnet_address_space
   app_subnet_address_prefix = var.app_subnet_address_prefix
   db_subnet_address_prefix  = var.db_subnet_address_prefix
+  aks_subnet_address_prefix = var.aks_subnet_address_prefix
   mysql_server_name         = var.mysql_server_name
 }
 
@@ -60,4 +61,20 @@ module "app_deploy" {
   mysql_database_name  = var.mysql_database_name
   vm_id                = module.vm.vm_id
   nic_association_id   = module.nsg.nic_association_id
+}
+
+module "acr" {
+  source = "./modules/acr"
+
+  resource_group_name = module.network.resource_group_name
+  location             = module.network.location
+}
+
+module "aks" {
+  source = "./modules/aks"
+
+  resource_group_name = module.network.resource_group_name
+  location             = module.network.location
+  acr_id              = module.acr.acr_id
+  aks_subnet_id       = module.network.aks_subnet_id
 }

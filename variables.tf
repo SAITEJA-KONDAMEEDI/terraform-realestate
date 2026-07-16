@@ -54,6 +54,11 @@ variable "db_subnet_address_prefix" {
   default = ["10.0.2.0/24"]
 }
 
+variable "aks_subnet_address_prefix" {
+  type    = list(string)
+  default = ["10.0.3.0/24"]
+}
+
 # --- VM ---
 
 variable "vm_name" {

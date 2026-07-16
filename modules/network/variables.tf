@@ -22,6 +22,10 @@ variable "db_subnet_address_prefix" {
   type = list(string)
 }
 
+variable "aks_subnet_address_prefix" {
+  type = list(string)
+}
+
 variable "mysql_server_name" {
   description = "Used to build the private DNS zone name for MySQL"
   type        = string
